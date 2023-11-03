@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+<body>
+    <nav class="navbar bg-danger-subtle bg-opacity-25">
+        <div class="container">
+            <h2 class="navbar-brand" style="font-family: 'Poor Richard';" href="/Index">Diary Project...</h2>
+            <partial name="_Loginpartial">
+        </div>
+    </nav>
+    <main class="container">
+        @RenderBody()
+    </main>
+</body>
+</html>

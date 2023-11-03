@@ -1,0 +1,28 @@
+﻿@page
+@model LessonAspIdentity18.Pages.LoginModel
+@{
+}
+<div class="row">
+    <div class="col-lg-5">
+        <fieldset>
+            <legend class="mt-4" style="font-family: 'Poor Richard';">Log In Section</legend>
+            <form method="post">
+                <input asp-for="UserName" class="form-control" placeholder="Username" style="font-family: 'Poor Richard';" />
+                <span asp-validation-for="UserName" class="text-danger" style="font-family: 'Poor Richard';"></span><br />
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password" style="font-family: 'Poor Richard';" />
+                <span asp-validation-for="Password" class="text-danger"style="font-family: 'Poor Richard';"></span><br />
+                <button class="btn btn-outline-primary mt-1" style="font-family: 'Poor Richard';">Log In</button>
+            </form>
+        </fieldset>
+        @{
+            if(Model.result=="failed")
+            {
+                <p style="font-family: 'Poor Richard';" class="alert alert-danger mt-1">The password you’ve entered is incorrect</p>
+            }
+            if(Model.errmsg!="")
+            {
+                <p style="font-family: 'Poor Richard';" class="alert alert-warning mt-1">@Model.errmsg</p>
+            }
+        }
+    </div>
+</div>

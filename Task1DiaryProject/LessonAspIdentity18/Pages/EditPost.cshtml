@@ -1,0 +1,25 @@
+﻿@page
+@model LessonAspIdentity18.Pages.EditPostModel
+@{
+}
+<div class="row">
+    <div class="col-lg-8">
+        <fieldset>
+            <legend>Update</legend>
+            <form method="post">
+                <input asp-for="post.PostTitle" class="form-control"/>
+                <span asp-validation-for="post.PostTitle" class="text-bg-danger"></span> <br />
+                <textarea asp-for="post.PostBody" rows="6" class="form-control"></textarea>
+                <span asp-validation-for="post.PostBody" class="text-bg-danger"></span> <br />
+                <button asp-page-handler="Update" class="btn-outline-warning">Update</button>
+            </form>
+            @{
+                if (Model.errmsg == "duplicated"){
+                    <p class="alert-warning">Check title repeat</p>
+                }else if(Model.errmsg == "error"){                    
+                    <p class="alert-warning">failed update process</p>
+                }
+            }
+        </fieldset>
+    </div>
+</div>

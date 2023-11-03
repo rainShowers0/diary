@@ -1,0 +1,18 @@
+﻿@page
+@model LessonAspIdentity18.Pages.LogoutModel
+@{
+
+    if(User.Identity.IsAuthenticated)
+    {
+        <form class="form-inline" asp-page="/Logout" 
+           asp-route-returnUrl="@Url.Page("/")" method="post">
+            <button type="submit" class="nav-link btn btn-link text-dark">
+            Log Out</button>
+        </form>
+    }
+    else
+    {
+        <p class="alert alert-primary mt-1">Log Out Success</p>
+    }
+}
+

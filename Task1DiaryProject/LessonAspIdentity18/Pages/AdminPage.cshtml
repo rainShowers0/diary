@@ -1,0 +1,62 @@
+﻿@page
+@model LessonAspIdentity18.Pages.AdminPageModel
+
+<div class="row">
+    <div class="col-lg-10">
+        <fieldset>
+            <legend>Enter Post</legend>
+            <form method="post" enctype="multipart/form-data">
+                <input asp-for="userpost.PostTitle" name="Title" class="form-control" placeholder="Title" /><br />
+                <span asp-validation-for="userpost.PostTitle" class="text-danger"></span><br />
+                <textarea asp-for="userpost.PostBody" name="Body" class="form-control" rows="6" placeholder="Enter Text"></textarea>
+                <span asp-validation-for="userpost.PostBody" class="text-danger"></span><br />
+                <input type="file" asp-for="Image" class="btn btn-outline-primary" /> <br />
+                <button class="btn btn-outline-primary mt-1" asp-page-handler="SavePost">Post</button>
+            </form>
+            @{
+                if (Model.statusmsg == "success")
+                {
+                    <p class="alert-success">Saved successfully</p>
+                }
+                else if (Model.statusmsg == "error")
+                {
+                    <p class="alert-warning">Failed</p>
+                }
+            }
+        </fieldset>
+        <fieldset>
+            <legend>Posts Of User</legend>
+            @{
+                if (Model.posts != null && Model.posts.Count > 0)
+                {
+                    <table class="table-bordered">
+                        <thead>
+                            <tr>
+                                <td>Title</td>
+                                <td>Post</td>
+                                <td>Created Date</td>
+                                <td>Image</td>
+                                <td>Video</td>
+                                <td>#</td>
+                            </tr>
+                        </thead>
+                        @foreach (var post in Model.posts)
+                        {
+                            <tr>
+                                <td>@post.PostTitle</td>
+                                <td>@post.PostBody</td>
+                                <td>@post.CDate</td>
+                                <td><img src="@post.ImgPath" alt="Post Image" width="100" /></td>
+                                <td>@post.Video</td>
+                                <td>
+                                    <a class="link-warning" asp-page="/EditPost" asp-route-PostID="@post.Id">Update</a>
+                                    <button class="btn btn-outline-success" asp-route-PostID="@post.Id" asp-page-handler="DeletePost">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+            }
+        </fieldset>
+    </div>
+</div>

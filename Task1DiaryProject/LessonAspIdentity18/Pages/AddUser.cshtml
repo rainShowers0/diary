@@ -1,0 +1,33 @@
+﻿@page
+@model LessonAspIdentity18.Pages.AddUserModel
+@{
+}
+<div class="row">
+    <div class="col-lg-8">
+        <fieldset>
+            <legend class="mt-4" style="font-family: 'Poor Richard';">Create New User</legend>
+            <form method="post">
+                <input asp-for="UserName" class="form-control" placeholder="Enter UserName" style="font-family: 'Poor Richard';" />
+                <span asp-validation-for="UserName" class="text-danger" style="font-family: 'Poor Richard';"></span><br />
+                <input asp-for="Password" type="password" class="form-control" placeholder="Enter Password" style="font-family: 'Poor Richard';" />
+                <span asp-validation-for="Password" class="text-danger" style="font-family: 'Poor Richard';"></span><br />
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Enter Confirm Password" style="font-family: 'Poor Richard';" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger" style="font-family: 'Poor Richard';"></span><br />
+                <button class="btn btn-outline-success mt-1" style="font-family: 'Poor Richard';">Create Account</button>
+            </form>
+            @{
+                if(Model.result=="success")
+                {
+                    <p style="font-family: 'Poor Richard';" class="alert alert-success mt-1">
+                        Account created succesful &nbsp
+                       <a asp-page="/Login">Log In</a>
+                    </p>
+                }
+                else if(Model.result=="error")
+                {
+                    <p style="font-family: 'Poor Richard';" class="alert alert-danger mt-1">амжилтгүй боллоо</p>
+                }
+            }
+        </fieldset>
+    </div>
+</div>
